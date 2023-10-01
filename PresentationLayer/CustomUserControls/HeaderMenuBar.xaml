@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="PresentationLayer.CustomUserControls.HeaderMenuBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PresentationLayer.CustomUserControls"
+             xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d"
+             Name="HeaderMenuBarUserControl"
+             >
+    
+    <Grid x:Name="GridConnection"
+          VerticalAlignment="Top"
+          HorizontalAlignment="Stretch"
+          Background="Transparent"
+          Margin="5"
+          >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*" MinWidth="170"/>
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Grid.Row="0" BorderBrush="red" BorderThickness="0"/>
+        <Border Grid.Column="1" Grid.Row="0" BorderBrush="green" BorderThickness="0"/>
+        <Border Grid.Column="2" Grid.Row="0" BorderBrush="yellow" BorderThickness="0"/>
+
+
+
+        <Button x:Name="ButtonGoBack"
+                Grid.Column="0"
+                Grid.Row="0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Stretch"
+                Style="{StaticResource menuBackButton}"         
+                Command="{Binding Path=HeaderMenuBarButtonGoBackCommand , ElementName=HeaderMenuBarUserControl}"
+                BorderBrush="AliceBlue"
+                BorderThickness="0"
+                >
+            <icon:PackIconMaterial Kind="ArrowLeft" Width="25" Height="25" />
+        </Button>
+        <StackPanel x:Name="StackPanelStatus"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Orientation="Horizontal" 
+                    FlowDirection="LeftToRight"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"
+                    >
+            <TextBlock x:Name="TextBlockStatus"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"
+                    TextWrapping="Wrap"                    
+                    Text="{Binding Path= HeaderMenuBarTitle , ElementName=HeaderMenuBarUserControl}"
+                    Margin="10,0,0,0"
+                    Foreground="{Binding Path=HeaderMenuBarTitleColor , ElementName=HeaderMenuBarUserControl}">
+
+            </TextBlock>
+        </StackPanel>
+        <TextBlock x:Name="TextBlockDescription"
+                   Grid.Column="2"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   TextWrapping="Wrap"
+                   Text="{Binding Path= HeaderMenuBarDescription , ElementName=HeaderMenuBarUserControl}"
+                   Margin="10,0,0,0"
+                   Foreground="{Binding Path=HeaderMenuBarDescriptionColor , ElementName=HeaderMenuBarUserControl}"
+                   >
+        </TextBlock>
+    </Grid>
+</UserControl>

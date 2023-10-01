@@ -1,0 +1,181 @@
+﻿<UserControl x:Class="PresentationLayer.MVVM.Views.SingleChatRoomView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PresentationLayer.MVVM.Views"
+             xmlns:cuc="clr-namespace:PresentationLayer.CustomUserControls"
+             mc:Ignorable="d">
+
+    <Grid x:Name="GridSingleChatRoomView"
+            VerticalAlignment="top"
+            HorizontalAlignment="Stretch"
+            Background="Transparent"
+            Margin="5"
+            Visibility="{Binding GridSingleChatRoomVisibility}"
+       >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <cuc:HeaderMenuBar
+            x:Name="HeaderMenuBarControl"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            FontSize="16"
+            HeaderMenuBarButtonGoBackCommand="{Binding ButtonSingleChatRoomGoBackCommand}"
+            HeaderMenuBarTitle="Chat Room Name: "
+            HeaderMenuBarTitleColor="{Binding SingleChatRoomTitleColor}"
+            HeaderMenuBarDescription="{Binding SingleChatRoomDescription}"
+            HeaderMenuBarDescriptionColor="{Binding SingleChatRoomDescriptionColor}"
+            />
+
+        <Grid x:Name="GridSingleChatRoomBody"
+              Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+        >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="6*" />               
+                
+
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="6*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="red" BorderThickness="0" />
+            <Border Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" BorderBrush="red" BorderThickness="0" />
+            <Border Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" BorderBrush="red" BorderThickness="0" />
+            <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="red" BorderThickness="0" />
+            <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" BorderBrush="red" BorderThickness="0" />
+            <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="red" BorderThickness="0" />
+            <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="red" BorderThickness="0" />
+            <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="red" BorderThickness="0" />
+            <Border Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="1" BorderBrush="red" BorderThickness="0" />
+
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" 
+                        Text="Chat Room ID :"
+                        Style="{StaticResource standardTextBlock}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        TextAlignment="Right"                       
+            />
+
+            <TextBox x:Name="ChatRoomID"               
+                        Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                        Text="{Binding SingleChatRoomID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource readonlyTextBox}"
+                        Margin="10,2,0,0"
+                        FontSize="12"
+                        TextAlignment="Left"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" 
+                        Text="Active Users :"
+                        Style="{StaticResource standardTextBlock}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        TextAlignment="Right"
+                       
+                        />
+            <ListBox x:Name="ChatRoomAllActiveUsers"
+                        Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                        ItemsSource="{Binding SingleChatRoomAllActiveUsers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Margin="10,0,0,0"
+                        MaxHeight="62"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        Background="Transparent"
+                        Foreground="{StaticResource plainTextBrushNeonWhite}"
+                    
+                >
+                <ListBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                        <Setter Property="Background" Value="{StaticResource panelBackgroundBrushGrey_XVI}"/>
+
+                    </Style>
+                </ListBox.Resources>
+
+            </ListBox>
+
+            <TextBox x:Name="AllActiveUsersCount"
+                        Grid.Row="2" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1"
+                        Text="{Binding SingleChatRoomAllActiveUsersCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Height="25"
+                        Style="{StaticResource readonlyTextBox}"
+                        VerticalScrollBarVisibility="Disabled"
+                        Margin="5,0,0,0"
+                        TextAlignment="Center"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        Padding="0"
+                        />
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1" 
+                        Text="Invites Status :"
+                        Style="{StaticResource standardTextBlock}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        TextAlignment="Right"
+           
+                        />
+
+            <ListBox x:Name="ChatRoomAllInvitesSentStatus"
+                     Grid.Row="3" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                     ItemsSource="{Binding SingleChatRoomAllInvitesSentStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="10,7,0,0"
+                     MaxHeight="62"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Top"
+                     Background="Transparent"
+                     Foreground="{StaticResource plainTextBrushNeonWhite}"
+         
+             >  
+                <ListBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                        <Setter Property="Background" Value="{StaticResource panelBackgroundBrushGrey_XVI}"/>
+
+                    </Style>
+                </ListBox.Resources>
+
+            </ListBox>
+
+            <TextBox x:Name="AllInvitesSentCount"
+                    Grid.Row="4" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1"
+                    Text="{Binding SingleChatRoomAllInvitesSentCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Height="25"
+                    Style="{StaticResource readonlyTextBox}"
+                    VerticalScrollBarVisibility="Disabled"
+                    Margin="5,0,0,0"
+                    TextAlignment="Center"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Padding="0"
+            />
+
+            <TextBox x:Name="ChatRoomConversation"
+                        Grid.Row="5" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="3"
+                        Text="{Binding SingleChatRoomConversationRecord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource readonlyTextBox}"
+                        TextAlignment="Left"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Stretch" 
+                        MinHeight="250"
+                        Margin="5"
+            />
+        </Grid>
+    </Grid>
+</UserControl>

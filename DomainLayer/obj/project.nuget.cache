@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "V2llZIMVGL6s/1MThpEntF+cZZNZHMTgG95L26SqP6+dg2/4FnfFGDjLD+l7YljukRZaTA2LWZUfDiyiTohj9A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Windows\\Documents\\Academy\\CSharp\\_MyProjects\\WPF_ChatRoomServer\\08_ChatRoomServerSolution_XUnitTest\\DomainLayer\\DomainLayer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Windows\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
